@@ -16,7 +16,7 @@
 //    echo "Год высокосный";
 //else
 //    echo "Год не высокосный";
-echo "hello";
+echo "hello world";
 $array = [10, 22, 11];
 echo (2);
      echo (1);
