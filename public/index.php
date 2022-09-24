@@ -16,11 +16,11 @@
 //    echo "Год высокосный";
 //else
 //    echo "Год не высокосный";
-echo "hello world";
-$array = [10, 22, 11];
-echo (2);
-     echo (1);
-echo (0);
-
-$array[] = 1213454;
-var_dump($array);
+echo "git hello";
+//$array = [10, 22, 11];
+//echo (2);
+//     echo (1);
+//echo (0);
+//
+//$array[] = 1213454;
+//var_dump($array);
