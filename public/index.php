@@ -45,7 +45,6 @@ foreach ($line as $first_word) {
 }
 echo "<hr>";
 
-
 echo "Задача №4";
 echo "<br>";
 echo "Переведите строку в транслит";
