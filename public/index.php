@@ -1,3 +1,29 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Таблица умножения в php</title>
+    <style>
+        .center {
+            width: 250px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: 125px;
+            margin-left: -125px;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid #030303;
+        }
+    </style>
+</head>
+<body>
 <?php
 
 echo "Задача №1";
@@ -68,9 +94,39 @@ echo "Вывести таблицу умножения";
 echo "<br>";
 echo "<br>";
 
-for ($i=1; $i <= 10; $i++ ) {
-    for ($k=1; $k <= 10; $k++) {
-        echo "$i x $k = " . $i * $k;
-        echo "</br>";
-    }
-}
+
+?>
+<div class="center">
+    <table>
+        <?
+        $rows = 10;
+        $cols = 10;
+        for ($i=1; $i <= $rows; $i++) {
+            echo "\t\t<tr>\n";
+            if ($i == 1) {
+                $b = '<b>';
+                $b_end = '</b>';
+            }
+            for ($q = 1; $q < $cols; $q++) {
+                if (($q == 1) && ($i != 1)) {
+                    $b = '<b>';
+                    $b_end = '</b>';
+                }
+                echo "\t\t\t<td>$b" . $i * $q . "$b_end</td>\n";
+                if (($q == 1) && ($i != 1)) {
+                    $b = '';
+                    $b_end = '';
+                }
+            }
+            echo "\t\t</tr>\n";
+            $b = '';
+            $b_end = '';
+        }
+        ?>
+    </table>
+
+
+
+</div>
+</body>
+</html>
