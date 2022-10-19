@@ -12,6 +12,8 @@ services:
             - php-fpm
             - mysql
     php-fpm:
+        environment:
+            PHP_IDE_CONFIG: "serverName=wd07"
         build:
           dockerfile: docker/php/Dockerfile
           context: .
@@ -20,7 +22,7 @@ services:
         links:
             - mysql
     mysql:
-        container_name: laravel_db
+        container_name: wd07_db
         image: mariadb:10.3
         ports:
             - 3306:3306
