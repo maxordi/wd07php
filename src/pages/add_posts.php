@@ -1,17 +1,17 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] == ['POST']){
-    $img = '';
-    if (isset($_FILES['my_file'])){
-        $img = "/upload/".$_FILES['my_file']['name'];
-        move_uploaded_file($_FILES['my_file']['tmp_name'],
-            __DIR__. "/../../public".$img);
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_FILES['files'])) {
+        for ($i = 0; $i < count($_FILES['files']['name']); $i++) {
+            $name = $_FILES['files']['name'][$i];
+            $pathBefore = $_FILES['files']['tmp_name'][$i];
+            $pathNew = BASE_DIR . "/upload/" . $name;
+            while (file_exists($pathNew) && is_file($pathNew)) {
+                $newName = rand(100000, 500000) . ".jpg";
+                $pathNew = BASE_DIR . "/upload/" . $newName;
+            }
+            move_uploaded_file($pathBefore, $pathNew);
+        }
     }
-    $title = $_POST['title'];
-    $content = $_POST['content'];
-    $sql = "INSERT INTO `posts` (`title`, `content`, `img`)
-        VALUES ('$title', '$content', '$img');";
-    mysqli_query($connection, $sql);
-
 }
 
 ?>
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == ['POST']){
     <input type="text" name="title">
     <br>
     <br>
-    <input type="file" name="my_file">
+    <input type="file" multiple="multiple" name="files[]">
     <br>
     <textarea name="content" id="" cols="30" rows="10"></textarea>
     <br>
@@ -39,4 +39,3 @@ if ($_SERVER['REQUEST_METHOD'] == ['POST']){
 </form>
 </body>
 </html>
-
