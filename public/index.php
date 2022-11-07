@@ -1,132 +1,82 @@
-<!doctype html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Таблица умножения в php</title>
-    <style>
-        .center {
-            width: 250px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin-top: 125px;
-            margin-left: -125px;
-        }
-        table {
-            border-collapse: collapse;
-        }
-        td {
-            border: 1px solid #030303;
-        }
-    </style>
-</head>
-<body>
 <?php
 
-echo "Задача №1";
-echo "<br>";
-echo "Изменить регистр строки на противоположный изначальная строка должна быть в верхнем или нижнем регистре";
-echo "<br>";
-echo "<br>";
+include_once __DIR__. '/../vendor/autoload.php';
+include_once __DIR__. '/../src/web_routes.php';
 
-$str = "hello world php";
-echo $str;
-echo "<br>";
-if ($str == strtolower($str)) {
-    echo strtoupper($str);
-} else {
-    echo strtolower($str);
-}
-
-echo "<hr>";
-echo "Задача №2";
-echo "<br>";
-echo "Посчитать количество слов в строке";
-echo "<br>";
-echo "<br>";
-echo $str;
-echo "<br>";
-
-print_r(str_word_count($str),1);
-echo "Ответ:";
-echo str_word_count($str);
-echo "<hr>";
-
-echo "Задача №3";
-echo "<br>";
-echo "Получите первое слово каждого предложения в тексте.";
-echo "<br>";
-
-$text = 'Hello world. I love php! My php homework.';
-echo $text;
-echo "<br>";
-echo "<br>";
-$line = str_replace(["!","?"],[".",".","."],$text);
-$line = explode(".",$line,-1);
-foreach ($line as $first_word) {
-    echo 'Первое слово предложения:'.strtok($first_word," ")."<br>";
-}
-echo "<hr>";
-
-echo "Задача №4";
-echo "<br>";
-echo "Переведите строку в транслит";
-echo "<br>";
-echo "<br>";
-$fraza = "Стремитесь не к успеху, а к ценностям, которые он дает";
-echo $fraza;
-echo "<br>";
-echo "<br>";
-
-$russian = array('А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я', 'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я');
-
-$translit = array('A', 'B', 'V', 'G', 'D', 'E', 'E', 'Gh', 'Z', 'I', 'Y', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'F', 'H', 'C', 'Ch', 'Sh', 'Sch', 'Y', 'Y', 'Y', 'E', 'Yu', 'Ya', 'a', 'b', 'v', 'g', 'd', 'e', 'e', 'gh', 'z', 'i', 'y', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 't', 'u', 'f', 'h', 'c', 'ch', 'sh', 'sch', 'y', 'y', 'y', 'e', 'yu', 'ya');
-
-echo str_ireplace($russian, $translit, $fraza);
-echo "<hr>";
-
-echo "Задача №5";
-echo "<br>";
-echo "Вывести таблицу умножения";
-echo "<br>";
-echo "<br>";
+//$dotenv = Dotenv\Dotenv::createImmutable(__DIR__."/../");
+//$dotenv->safeLoad();
+//$user = \App\Models\User::findById(1);
+//App\Core\Debugger::debug($user);
 
 
-?>
-<div class="center">
-    <table>
-        <?
-        $rows = 10;
-        $cols = 10;
-        for ($i=1; $i <= $rows; $i++) {
-            echo "\t\t<tr>\n";
-            if ($i == 1) {
-                $b = '<b>';
-                $b_end = '</b>';
-            }
-            for ($q = 1; $q < $cols; $q++) {
-                if (($q == 1) && ($i != 1)) {
-                    $b = '<b>';
-                    $b_end = '</b>';
-                }
-                echo "\t\t\t<td>$b" . $i * $q . "$b_end</td>\n";
-                if (($q == 1) && ($i != 1)) {
-                    $b = '';
-                    $b_end = '';
-                }
-            }
-            echo "\t\t</tr>\n";
-            $b = '';
-            $b_end = '';
-        }
-        ?>
-    </table>
+// Задача №1
+
+//$worker1 = new App\Worker();
+//$worker1->name = 'Иван';
+//$worker1->age = 25;
+//$worker1->salary = 1000;
+//
+//$worker2 = new \App\Worker();
+//$worker2->name = 'Вася';
+//$worker2->age = 26;
+//$worker2->salary = 2000;
+//
+//echo $sum_salary = $worker1->salary + $worker2->salary;
+//echo "<br>";
+//echo $sum_salary = $worker1->age + $worker2->age;
+
+// Задача №2 и №3
+
+$worker1 = new App\Worker();
+$worker1->setName('Иван');
+$worker1->setAge(25);
+$worker1->setSalary(1000);
+
+$worker2 = new \App\Worker();
+$worker2->setName('Вася');
+$worker2->setAge(26);
+$worker2->setSalary(2000);
+echo ' Cумма зарплат Ивана и Васи: ';
+echo $sum_salary = $worker1->getSalary() + $worker2->getSalary();
+echo "<br>";
+echo ' Cумма возрастов Ивана и Васи: ';
+echo $sum_age = $worker1->getAge() + $worker2->getAge();
 
 
+// Задача №4
+echo "<br>";
+echo ' Произвидение возраста и зарплаты Димы: ';
 
-</div>
-</body>
-</html>
+$worker4 = new \App\Worker4('Дима', 25, 1000);
+
+echo $worker4->proizved();
+
+// Задача №5
+echo "<br>";
+
+$worker5 = new \App\Worker5();
+$worker5->setName('Иван');
+$worker5->setAge(25);
+$worker5->setSalary(1000);
+
+$worker6 = new \App\Worker5();
+$worker6->setName('Вася');
+$worker6->setAge(26);
+$worker6->setSalary(2000);
+
+echo ' Cумма зарплат Ивана и Васи: ';
+echo $sum_salary = $worker5->getSalary() + $worker6->getSalary();
+echo "<br>";
+
+$student = new \App\Student();
+$student->setName('Максим');
+$student->setAge(31);
+$student->setKurs(1);
+$student->setStipendiya(320);
+
+//Задача №6
+$driver = new \App\Driver('Дима', 5,'B');
+
+echo $driver->getName();
+echo $driver->getStage();
+echo $driver->getCategory();
